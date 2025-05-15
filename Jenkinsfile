@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/Toastyzzz/PHPTest'
+                git branch: 'main', url: 'https://github.com/Toastyzzz/PHPTest'
             }
         }
         stage('Build') {
