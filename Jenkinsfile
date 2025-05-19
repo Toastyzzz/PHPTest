@@ -16,15 +16,17 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+          stage('Deploy') {
             steps {
                 echo 'Deploying to EC2...'
                 sh '''
+                  scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/Assignment1.pem index.php ec2-user@ec2-3-83-86-27.compute-1.amazonaws.com:/home/ec2-user/
+
                   ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/Assignment1.pem ec2-user@ec2-3-83-86-27.compute-1.amazonaws.com << EOF
-                    cd "/var/lib/jenkins/workspace/GitHub pipeline"
-                    git pull origin main
-                    # Restart your app service or run deploy commands below:
-                   sudo systemctl list-units --type=service | grep -iE 'apache|nginx|php|httpd'
+                    sudo mv /home/ec2-user/index.php /var/www/html/
+                    sudo chown apache:apache /var/www/html/index.php
+                    sudo chmod 644 /var/www/html/index.php
+                    sudo systemctl restart httpd
                   EOF
                 '''
             }
