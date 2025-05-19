@@ -11,24 +11,22 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build...'
-                // Add your build commands here, e.g.:
-                // sh 'npm install && npm run build'
             }
         }
 
-          stage('Deploy') {
+        stage('Deploy') {
             steps {
                 echo 'Deploying to EC2...'
-                sh '''
-                  scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/Assignment1.pem index.php ec2-user@ec2-3-83-86-27.compute-1.amazonaws.com:/home/ec2-user/
+                sh """
+                    scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/Assignment1.pem index.php ec2-user@ec2-3-83-86-27.compute-1.amazonaws.com:/home/ec2-user/
 
-                  ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/Assignment1.pem ec2-user@ec2-3-83-86-27.compute-1.amazonaws.com << EOF
-                    sudo mv /home/ec2-user/index.php /var/www/html/
-                    sudo chown apache:apache /var/www/html/index.php
-                    sudo chmod 644 /var/www/html/index.php
-                    sudo systemctl restart httpd
-                  EOF
-                '''
+                    ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/Assignment1.pem ec2-user@ec2-3-83-86-27.compute-1.amazonaws.com << EOF
+                        sudo mv /home/ec2-user/index.php /var/www/html/
+                        sudo chown apache:apache /var/www/html/index.php
+                        sudo chmod 644 /var/www/html/index.php
+                        sudo systemctl restart httpd
+                    EOF
+                """
             }
         }
     }
