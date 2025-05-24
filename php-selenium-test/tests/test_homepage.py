@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 import time
 
 # Replace with your actual EC2 public IP or hostname
-BASE_URL = "http://http://ec2-3-83-86-27.compute-1.amazonaws.com:8080/index.php"
+BASE_URL = "http://ec2-3-83-86-27.compute-1.amazonaws.com:8080/index.php"
 
 def test_homepage_heading():
     # Setup Chrome WebDriver (make sure chromedriver is installed and in PATH)
