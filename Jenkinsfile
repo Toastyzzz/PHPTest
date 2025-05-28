@@ -14,6 +14,19 @@ pipeline {
             }
         }
 
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run Selenium Tests') {
+            steps {
+                sh 'pytest php-selenium-test/tests/'
+            }
+        }
+
+
         stage('Deploy') {
             steps {
                 echo 'Deploying to EC2...'
