@@ -31,7 +31,7 @@ def test_form_submission():
     assert greeting.text == "Hello, Alice!", "Greeting did not match expected text!"
 
     driver.quit()
-    shutil.rmtree(ignore_errors=True)
+    
 
 if __name__ == "__main__":
     test_form_submission()
