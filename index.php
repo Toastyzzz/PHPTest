@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PHP Example</title>
+    <title>PHP Input Example</title>
 </head>
 <body>
-    <h1>
-        <?php
-        echo "Hello, World!<br>";
-        echo "This is a simple web app for teting.";
-        ?>
-    </h1>
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    Enter your name: <input type="text" name="username">
+    <input type="submit" value="Submit">
+</form>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the input value and sanitize it
+    $name = htmlspecialchars($_POST["username"]);
+    echo "<h3>Hello, " . $name . "!</h3>";
+}
+?>
+
 </body>
 </html>
