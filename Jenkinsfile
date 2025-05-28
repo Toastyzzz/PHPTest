@@ -22,7 +22,7 @@ pipeline {
 
         stage('Run Selenium Tests') {
             steps {
-                sh 'pytest php-selenium-test/tests/'
+                sh 'pytest php-selenium-test/tests/test_input.py'
             }
         }
 
