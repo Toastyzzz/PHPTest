@@ -4,8 +4,8 @@
     <title>PHP Example</title>
 </head>
 <body>
-        <?php
-        echo "This is a simple web app for testing.";
-        ?>
+<?php
+echo "Hello, World!";
+?>
 </body>
 </html>
