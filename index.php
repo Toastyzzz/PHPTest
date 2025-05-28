@@ -7,7 +7,7 @@
     <h1>
         <?php
         echo "Hello, World!<br>";
-        echo "This is a simple web app for testing.";
+        echo "This is a simple web app for teting.";
         ?>
     </h1>
 </body>
