@@ -9,13 +9,9 @@ BASE_URL = "http://ec2-3-83-86-27.compute-1.amazonaws.com/index.php"
 
 def test_form_submission():
     options = Options()
-
-    user_data_dir = f"/tmp/chrome-user-data-{uuid.uuid4()}"
-    options.add_argument(f"--user-data-dir={user_data_dir}")
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-
     driver = webdriver.Chrome(options=options)
     driver.get(BASE_URL)
 
