@@ -18,5 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<?php
+    echo "<h1>Test Message</h1>";
+?>
+
 </body>
 </html>
